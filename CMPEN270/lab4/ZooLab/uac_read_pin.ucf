@@ -1,0 +1,21 @@
+NET "U" LOC = "N3";
+NET "A" LOC = "E2";
+NET "C" LOC = "F3";
+
+NET "S" LOC = "P11";
+
+NET "need_vac" LOC = "G1";
+NET "dangerous" LOC = "M5";
+
+NET "A1" LOC = "L14";
+NET "B1" LOC = "H12";
+NET "C1" LOC = "N14";
+NET "D1" LOC = "N11";
+NET "E1" LOC = "P12";
+NET "F1" LOC = "L13";
+NET "G1" LOC = "M12";
+
+NET "AN0" LOC = "F12";
+NET "AN1" LOC = "J12";
+NET "AN2" LOC = "M13";
+NET "AN3" LOC = "K14";

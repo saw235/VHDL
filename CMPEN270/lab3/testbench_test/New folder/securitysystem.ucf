@@ -1,0 +1,8 @@
+
+NET "switch1" LOC = "G3";
+NET "switch2" LOC = "F3";
+NET "switch3" LOC = "E2";
+NET "switch4" LOC = "N3";
+
+NET "ss_normalop" LOC = "G1";
+

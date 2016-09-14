@@ -1,0 +1,7 @@
+Net "Rst" Loc = "N3";
+Net "LeftBt" Loc = "A7";
+Net "RightBt" Loc = "G12";
+Net "Clk" Loc = "B8";
+Net "RightN" Loc = "K3";
+Net "LeftN" Loc = "G3";
+Net "LightOn" Loc = "P6";

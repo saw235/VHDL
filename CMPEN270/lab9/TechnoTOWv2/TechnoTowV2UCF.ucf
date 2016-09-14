@@ -1,0 +1,35 @@
+net "sw7" loc = "N7";
+net "sw6" loc = "E2";
+net "sw5" loc = "F3";
+net "sw4" loc = "G3";
+net "sw3" loc = "B4";
+net "sw2" loc = "K3";
+net "sw1" loc = "L3";
+net "sw0" loc = "P11";
+
+net "RightBt" loc = "G12";
+net "Resetgame" loc = "A7";
+net "Resetcount" loc = "C11";
+net "Clk" loc = "B8";
+
+NET "A" LOC = "L14";
+NET "B" LOC = "H12";
+NET "C" LOC = "N14";
+NET "D" LOC = "N11";
+NET "E" LOC = "P12";
+NET "F" LOC = "L13";
+NET "G" LOC = "M12";
+
+
+Net "Anode3" Loc = "K14";
+Net "Anode2" Loc = "M13";
+Net "Anode1" Loc = "J12";
+Net "Anode0" Loc = "F12";
+
+Net "LED0" Loc ="M5";
+Net "LED1" Loc ="M11";
+Net "LED2" Loc ="P7";
+Net "LED3" Loc ="P6";
+Net "LED4" Loc ="N5";
+Net "LED5" Loc ="N4";
+Net "LED6" Loc ="P4";

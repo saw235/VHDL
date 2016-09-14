@@ -1,0 +1,11 @@
+NET "clk" CLOCK_DEDICATED_ROUTE = FALSE;
+net "clk" loc = "G12";
+net "rst" loc = "A7";
+net "q0" loc = "G1";
+net "q1" loc = "P4";
+net "q2" loc = "N4";
+net "q3" loc = "N5";
+net "q4" loc = "P6";
+net "q5" loc = "P7";
+net "q6" loc = "M11";
+net "q7" loc = "M5";

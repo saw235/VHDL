@@ -1,0 +1,4 @@
+Net "clk" Loc = "B8";
+Net "input" Loc = "G12";
+Net "rst" Loc = "N3";
+Net "input_pulse" Loc = "P7";

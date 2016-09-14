@@ -1,0 +1,25 @@
+Net "Clk" Loc = "B8";
+Net "Reset" Loc = "N3";
+Net "LeftBt" Loc = "A7";
+Net "RightBt" Loc = "G12";
+NET "A" LOC = "L14";
+NET "B" LOC = "H12";
+NET "C" LOC = "N14";
+NET "D" LOC = "N11";
+NET "E" LOC = "P12";
+NET "F" LOC = "L13";
+NET "G" LOC = "M12";
+
+
+Net "Anode3" Loc = "K14";
+Net "Anode2" Loc = "M13";
+Net "Anode1" Loc = "J12";
+Net "Anode0" Loc = "F12";
+
+Net "LED0" Loc ="M5";
+Net "LED1" Loc ="M11";
+Net "LED2" Loc ="P7";
+Net "LED3" Loc ="P6";
+Net "LED4" Loc ="N5";
+Net "LED5" Loc ="N4";
+Net "LED6" Loc ="P4";

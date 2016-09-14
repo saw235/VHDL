@@ -1,0 +1,14 @@
+net "a0" loc = "G3";
+net "a1" loc = "F3";
+net "a2" loc = "E2";
+net "a3" loc = "N3";
+
+net "b0" loc = "P11";
+net "b1" loc = "L3";
+net "b2" loc = "K3";
+net "b3" loc = "B4";
+
+net "s0" loc = "N5";
+net "s1" loc = "N4";
+net "s2" loc = "P4";
+net "s3" loc = "G1";
