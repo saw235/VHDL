@@ -25,27 +25,27 @@ ARCHITECTURE behavior OF Lab02_xps5001_tb IS
  
     COMPONENT Lab02_xps5001
     PORT(
-         SWITCH : IN  std_logic_vector(7 downto 0);
-         BTNU : IN  std_logic;
-         BTNC : IN  std_logic;
-         BTND : IN  std_logic;
-         ANODE : OUT  std_logic_vector(7 downto 0);
+         SWITCH  : IN  std_logic_vector(7 downto 0);
+         BTNU 	  : IN  std_logic;
+         BTNC 	  : IN  std_logic;
+         BTND 	  : IN  std_logic;
+         ANODE   : OUT  std_logic_vector(7 downto 0);
          SEGMENT : OUT  std_logic_vector(0 to 6);
-         LED : OUT  std_logic_vector(7 downto 0)
+         LED 	  : OUT  std_logic_vector(7 downto 0)
         );
     END COMPONENT;
     
 
    --Inputs
-   signal SWITCH : std_logic_vector(7 downto 0) := (others => '0');
-   signal BTNU : std_logic := '0';
-   signal BTNC : std_logic := '0';
-   signal BTND : std_logic := '0';
+   signal SWITCH 	: std_logic_vector(7 downto 0) := (others => '0');
+   signal BTNU 	: std_logic := '0';
+   signal BTNC 	: std_logic := '0';
+   signal BTND 	: std_logic := '0';
 
  	--Outputs
-   signal ANODE : std_logic_vector(7 downto 0);
-   signal SEGMENT : std_logic_vector(0 to 6);
-   signal LED : std_logic_vector(7 downto 0);
+   signal ANODE	: std_logic_vector(7 downto 0);
+   signal SEGMENT	: std_logic_vector(0 to 6);
+   signal LED 		: std_logic_vector(7 downto 0);
    
 	 -- Test vector includes input stimuli and expected outputs
    -- BTNU      			: bits 21

@@ -25,34 +25,34 @@ ARCHITECTURE behavioral OF RippleCarryAdder_4bit_tb IS
  
     COMPONENT RippleCarryAdder_4bit
     PORT(
-         A : IN  std_logic_vector(3 downto 0);
-         B : IN  std_logic_vector(3 downto 0);
-         C_in : IN  std_logic;
+         A 		: IN  std_logic_vector(3 downto 0);
+         B 		: IN  std_logic_vector(3 downto 0);
+         C_in 	: IN  std_logic;
          C_out : OUT  std_logic;
-         SUM : OUT  std_logic_vector(3 downto 0)
+         SUM 	: OUT  std_logic_vector(3 downto 0)
         );
     END COMPONENT;
     
 
    --Inputs
-   signal A : std_logic_vector(3 downto 0) := (others => '0');
-   signal B : std_logic_vector(3 downto 0) := (others => '0');
+   signal A 	: std_logic_vector(3 downto 0) := (others => '0');
+   signal B 	: std_logic_vector(3 downto 0) := (others => '0');
    signal C_in : std_logic := '0';
 
  	--Outputs
-   signal C_out : std_logic;
-   signal SUM : std_logic_vector(3 downto 0);
+   signal C_out 	: std_logic;
+   signal SUM 		: std_logic_vector(3 downto 0);
  
  
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
    uut: RippleCarryAdder_4bit PORT MAP (
-          A => A,
-          B => B,
-          C_in => C_in,
-          C_out => C_out,
-          SUM => SUM
+          A 		=> A,
+          B 		=> B,
+          C_in 	=> C_in,
+          C_out 	=> C_out,
+          SUM 		=> SUM
         );
 
 

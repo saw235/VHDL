@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------------
 -- Entity:        AdderSubtractor_4bit_tb
 -- Written By:    Saw Xue Zheng
--- Date Created:  8/27/2017
+-- Date Created:  8/27/2016
 -- Description:   Testbench for AdderSubtractor_4bit
 --
 -- Revision History (date, initials, description):
@@ -23,22 +23,22 @@ ARCHITECTURE behavior OF AdderSubtractor_4bit_tb IS
  
     COMPONENT AdderSubtractor_4bit
     PORT(
-         A : IN  std_logic_vector(3 downto 0);
-         B : IN  std_logic_vector(3 downto 0);
+         A 			: IN  std_logic_vector(3 downto 0);
+         B 			: IN  std_logic_vector(3 downto 0);
          SUBTRACT : IN  std_logic;
-         SUM : OUT  std_logic_vector(3 downto 0);
+         SUM 		: OUT  std_logic_vector(3 downto 0);
          OVERFLOW : OUT  std_logic
         );
     END COMPONENT;
     
 
    --Inputs
-   signal A : std_logic_vector(3 downto 0) := (others => '0');
-   signal B : std_logic_vector(3 downto 0) := (others => '0');
+   signal A 		 : std_logic_vector(3 downto 0) := (others => '0');
+   signal B 		 : std_logic_vector(3 downto 0) := (others => '0');
    signal SUBTRACT : std_logic := '0';
 	
  	--Outputs
-   signal SUM : std_logic_vector(3 downto 0);
+   signal SUM 		 : std_logic_vector(3 downto 0);
    signal OVERFLOW : std_logic;
 
 	
@@ -46,10 +46,10 @@ BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
    uut: AdderSubtractor_4bit PORT MAP (
-          A => A,
-          B => B,
+          A			 => A,
+          B 		 => B,
           SUBTRACT => SUBTRACT,
-          SUM => SUM,
+          SUM 		 => SUM,
           OVERFLOW => OVERFLOW
         );
 

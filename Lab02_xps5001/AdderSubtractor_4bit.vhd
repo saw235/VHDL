@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------------
 -- Entity:        AdderSubtractor_4bit
 -- Written By:    Saw Xue Zheng
--- Date Created:  8/27/2017
+-- Date Created:  8/27/2016
 -- Description:   Component to add or subtract two 4bit numbers
 --						Able to detect if overflow
 --
@@ -18,11 +18,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 
 entity AdderSubtractor_4bit is
-    Port ( A : in  STD_LOGIC_VECTOR (3 downto 0);
-           B : in  STD_LOGIC_VECTOR (3 downto 0);
-			  SUBTRACT : in  STD_LOGIC;
-           SUM : out  STD_LOGIC_VECTOR (3 downto 0);
-           OVERFLOW : out  STD_LOGIC);
+    Port ( A 			: in  STD_LOGIC_VECTOR (3 downto 0);
+           B 			: in  STD_LOGIC_VECTOR (3 downto 0);
+			  SUBTRACT 	: in  STD_LOGIC;
+           SUM 		: out  STD_LOGIC_VECTOR (3 downto 0);
+           OVERFLOW 	: out  STD_LOGIC);
 end AdderSubtractor_4bit;
 
 architecture Structural of AdderSubtractor_4bit is
@@ -30,11 +30,11 @@ architecture Structural of AdderSubtractor_4bit is
 	-- Component
 COMPONENT RippleCarryAdder_4bit
     PORT(
-         A : IN  std_logic_vector(3 downto 0);
-         B : IN  std_logic_vector(3 downto 0);
-         C_in : IN  std_logic;
+         A 		: IN  std_logic_vector(3 downto 0);
+         B 		: IN  std_logic_vector(3 downto 0);
+         C_in 	: IN  std_logic;
          C_out : OUT  std_logic;
-         SUM : OUT  std_logic_vector(3 downto 0)
+         SUM	: OUT  std_logic_vector(3 downto 0)
         );
     END COMPONENT;
 
@@ -47,10 +47,10 @@ begin
 
 	-- Instance of RippleCarryAdder_4bit
 	RCA : RippleCarryAdder_4bit PORT MAP (
-          A => A,
-          B => BXOR,
+          A 	=> A,
+          B 	=> BXOR,
           C_in => SUBTRACT,
-          SUM => SUM_int
+          SUM 	=> SUM_int
         );
 		  
 	-- InvertOrPass		(LOGIC)

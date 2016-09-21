@@ -101,7 +101,7 @@ begin
 				
 	
 	--OUTPUTS
-	ANODE <= ( 0 => '1', others => '0'); 
+	ANODE <= ( 0 => '0', others => '1'); 
 	LED(3 downto 0) <= SUM_int;
 	LED(6 downto 4) <= (others => '0');
 
