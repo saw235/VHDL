@@ -1,14 +1,14 @@
 ----------------------------------------------------------------------------
--- Entity:        RippleCarryAdder_4bit_tb
+-- Entity:        RippleCarryAdder_tb
 -- Written By:    Saw Xue Zheng
--- Date Created:  8/27/2017
--- Description:   Testbench for RippleCarryAdder_4bit
---
+-- Date Created:  9/17/2017
+-- Description:   Testbench for RippleCarryAdder
+
 -- Revision History (date, initials, description):
--- 	27 Aug 16, xps5001, file created.
+-- 	17 Sept 16, xps5001, file created.
 
 -- Dependencies:
---		RippleCarryAdder_4bit
+--		RippleCarryAdder
 ----------------------------------------------------------------------------
 
 
@@ -16,23 +16,21 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 
  
-ENTITY RippleCarryAdder_4bit_tb IS
-END RippleCarryAdder_4bit_tb;
+ENTITY RippleCarryAdder_tb IS
+END RippleCarryAdder_tb;
  
-ARCHITECTURE behavioral OF RippleCarryAdder_4bit_tb IS 
+ARCHITECTURE behavioral OF RippleCarryAdder_tb IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT RippleCarryAdder_4bit
-    PORT(
-         A 		: IN  std_logic_vector(3 downto 0);
-         B 		: IN  std_logic_vector(3 downto 0);
-         C_in 	: IN  std_logic;
-         C_out : OUT  std_logic;
-         SUM 	: OUT  std_logic_vector(3 downto 0)
-        );
-    END COMPONENT;
-    
+Component RippleCarryAdder
+	 generic ( n: integer);
+    Port ( A 		: in  STD_LOGIC_VECTOR (n-1 downto 0);
+           B 		: in  STD_LOGIC_VECTOR (n-1 downto 0);
+           C_in 	: in  STD_LOGIC;
+           C_out 	: out  STD_LOGIC;
+           SUM 	: out  STD_LOGIC_VECTOR (n-1 downto 0));
+end component;
 
    --Inputs
    signal A 	: std_logic_vector(3 downto 0) := (others => '0');
@@ -47,12 +45,16 @@ ARCHITECTURE behavioral OF RippleCarryAdder_4bit_tb IS
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: RippleCarryAdder_4bit PORT MAP (
-          A		 	=> A,
-          B 		=> B,
+   uut: RippleCarryAdder 
+	
+	--instantiate a 4-bit adder
+	GENERIC MAP ( N=> 4) 
+	PORT MAP (
+          A		 	=> A (3 downto 0),
+          B 		=> B (3 downto 0),
           C_in 	=> C_in,
           C_out	=> C_out,
-          SUM 		=> SUM
+          SUM 		=> SUM (3 downto 0)
         );
 
 
@@ -125,6 +127,7 @@ BEGIN
 		
 		
       wait;
+		
    end process;
 
 END;

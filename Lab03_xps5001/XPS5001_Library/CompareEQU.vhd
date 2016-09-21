@@ -1,11 +1,11 @@
 ----------------------------------------------------------------------------
--- Entity:        CompareEQU_4bit
+-- Entity:        CompareEQU
 -- Written By:    Saw Xue Zheng
--- Date Created:  9/10/2016
--- Description:   Compare 2 4-bit number output 1 if equal
+-- Date Created:  9/17/2016
+-- Description:   Compare 2 number output 1 if equal
 --
 -- Revision History (date, initials, description):
--- 	9 September 16, xps5001, file created.
+-- 	17 September 16, xps5001, file created.
 
 -- Dependencies:
 --		None
@@ -14,13 +14,14 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
-entity CompareEQU_4bit is
-    Port ( A	 : in  STD_LOGIC_VECTOR (3 downto 0);
-           B	 : in  STD_LOGIC_VECTOR (3 downto 0);
+entity CompareEQU is
+	 Generic ( n : integer := 8);
+    Port ( A	 : in  STD_LOGIC_VECTOR (n-1 downto 0);
+           B	 : in  STD_LOGIC_VECTOR (n-1 downto 0);
            EQU	 : out  STD_LOGIC);
-end CompareEQU_4bit;
+end CompareEQU;
 
-architecture Behavioral of CompareEQU_4bit is
+architecture Behavioral of CompareEQU is
 
 begin
 

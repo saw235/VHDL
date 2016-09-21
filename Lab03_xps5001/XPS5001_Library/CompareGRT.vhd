@@ -1,11 +1,11 @@
 ----------------------------------------------------------------------------
--- Entity:        CompareGRT_4bit
+-- Entity:        CompareGRT
 -- Written By:    Saw Xue Zheng
--- Date Created:  9/10/2016
--- Description:   Compare 2 4-bit number, output 1 if A > B
+-- Date Created:  9/17/2016
+-- Description:   Compare 2 number, output 1 if A > B
 --
 -- Revision History (date, initials, description):
--- 	9 September 16, xps5001, file created.
+-- 	17 September 16, xps5001, file created.
 
 -- Dependencies:
 --		None
@@ -14,13 +14,14 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 
-entity CompareGRT_4bit is
-    Port ( A   : in  STD_LOGIC_VECTOR (3 downto 0);
-           B   : in  STD_LOGIC_VECTOR (3 downto 0);
-           GRT : out  STD_LOGIC);
-end CompareGRT_4bit;
+entity CompareGRT is
+	 Generic ( n : integer := 8);
+    Port ( A    : in  STD_LOGIC_VECTOR (n-1 downto 0);
+           B    : in  STD_LOGIC_VECTOR (n-1 downto 0);
+           GRT  : out  STD_LOGIC);
+end CompareGRT;
 
-architecture Behavioral of CompareGRT_4bit is
+architecture Behavioral of CompareGRT is
 
 begin
 

@@ -52,15 +52,7 @@ package XPS5001_Components is
 				SEL 	: in  STD_LOGIC;
 				Y 		: out  STD_LOGIC_VECTOR (3 downto 0));
 	end component;
-	
-	component AdderSubtractor_4bit is
-		Port (A 			: in  STD_LOGIC_VECTOR (3 downto 0);
-				B 			: in  STD_LOGIC_VECTOR (3 downto 0);
-				SUBTRACT : in  STD_LOGIC;
-				SUM 		: out  STD_LOGIC_VECTOR (3 downto 0);
-				OVERFLOW : out  STD_LOGIC);
-	end component;
-	
+		
 	component CompareEQU_4bit is
 		Port (A 	: in  STD_LOGIC_VECTOR (3 downto 0);
 				B 	: in  STD_LOGIC_VECTOR (3 downto 0);
@@ -113,6 +105,60 @@ package XPS5001_Components is
          AVERAGE : out  std_logic_vector(3 downto 0)
         );
     end component;
+	 
+	 Component RippleCarryAdder
+	 Generic ( n: integer);
+    Port ( A 		: in  STD_LOGIC_VECTOR (n-1 downto 0);
+           B 		: in  STD_LOGIC_VECTOR (n-1 downto 0);
+           C_in 	: in  STD_LOGIC;
+           C_out 	: out  STD_LOGIC;
+           SUM 	: out  STD_LOGIC_VECTOR (n-1 downto 0));
+	end component;
+	
+	Component Mux4to1
+	Generic ( n : integer := 8);
+   Port ( X0  : in  STD_LOGIC_VECTOR (n-1 downto 0);
+          X1  : in  STD_LOGIC_VECTOR (n-1 downto 0);
+          X2  : in  STD_LOGIC_VECTOR (n-1 downto 0);
+          X3  : in  STD_LOGIC_VECTOR (n-1 downto 0);
+          SEL : in  STD_LOGIC_VECTOR (1 downto 0);
+          Y  : out  STD_LOGIC_VECTOR (n-1 downto 0));
+	end component;
+	
+	
+	Component CompareEQU
+	Generic ( n : integer := 8);
+   Port ( A	 	: in  STD_LOGIC_VECTOR (n-1 downto 0);
+          B	 	: in  STD_LOGIC_VECTOR (n-1 downto 0);
+          EQU	: out  STD_LOGIC);
+	end component;
+	
+	Component CompareGRT
+	Generic ( n : integer := 8);
+   Port ( A	 	: in  STD_LOGIC_VECTOR (n-1 downto 0);
+          B	 	: in  STD_LOGIC_VECTOR (n-1 downto 0);
+          GRT	: out  STD_LOGIC);
+	end component;
+
+	Component CompareLES
+	Generic ( n : integer := 8);
+   Port ( A	 	: in  STD_LOGIC_VECTOR (n-1 downto 0);
+          B	 	: in  STD_LOGIC_VECTOR (n-1 downto 0);
+          LES	: out  STD_LOGIC);
+	end component;	
+	
+	COMPONENT AdderSubtractor
+	Generic ( n : integer := 8);
+   PORT(
+         A 			: IN  std_logic_vector(n-1 downto 0);
+         B 			: IN  std_logic_vector(n-1 downto 0);
+         SUBTRACT : IN  std_logic;
+         SUM 		: OUT  std_logic_vector(n-1 downto 0);
+         OVERFLOW : OUT  std_logic
+       );
+	end component;
+	
+	
 end XPS5001_Components;
 ----------------------------------------------------------------------------
 

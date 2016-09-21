@@ -23,21 +23,21 @@ ARCHITECTURE behavior OF Mux4to1_4bit_tb IS
  
     COMPONENT Mux4to1_4bit
     PORT(
-         X0 : IN  std_logic_vector(3 downto 0);
-         X1 : IN  std_logic_vector(3 downto 0);
-         X2 : IN  std_logic_vector(3 downto 0);
-         X3 : IN  std_logic_vector(3 downto 0);
+         X0  : IN  std_logic_vector(3 downto 0);
+         X1  : IN  std_logic_vector(3 downto 0);
+         X2  : IN  std_logic_vector(3 downto 0);
+         X3  : IN  std_logic_vector(3 downto 0);
          SEL : IN  std_logic_vector(1 downto 0);
-         Y : OUT  std_logic_vector(3 downto 0)
+         Y 	 : OUT  std_logic_vector(3 downto 0)
         );
     END COMPONENT;
     
 
    --Inputs
-   signal X0 : std_logic_vector(3 downto 0) := (others => '0');
-   signal X1 : std_logic_vector(3 downto 0) := (others => '0');
-   signal X2 : std_logic_vector(3 downto 0) := (others => '0');
-   signal X3 : std_logic_vector(3 downto 0) := (others => '0');
+   signal X0  : std_logic_vector(3 downto 0) := (others => '0');
+   signal X1  : std_logic_vector(3 downto 0) := (others => '0');
+   signal X2  : std_logic_vector(3 downto 0) := (others => '0');
+   signal X3  : std_logic_vector(3 downto 0) := (others => '0');
    signal SEL : std_logic_vector(1 downto 0) := (others => '0');
 
  	--Outputs
@@ -47,12 +47,12 @@ BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
    uut: Mux4to1_4bit PORT MAP (
-          X0 => X0,
-          X1 => X1,
-          X2 => X2,
-          X3 => X3,
-          SEL => SEL,
-          Y => Y
+          X0 	=> X0,
+          X1 	=> X1,
+          X2 	=> X2,
+          X3 	=> X3,
+          SEL 	=> SEL,
+          Y 	=> Y
         );
 
 

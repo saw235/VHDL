@@ -1,12 +1,23 @@
+----------------------------------------------------------------------------
+-- Entity:        Decoder3to8
+-- Written By:    Saw Xue Zheng
+-- Date Created:  9/10/2016
+-- Description:   3 to 8 decoder
+--
+-- Revision History (date, initials, description):
+-- 	9 September 16, xps5001, file created.
 
+-- Dependencies:
+--		None
+----------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
 
 entity Decoder3to8 is
-    Port ( X : in  STD_LOGIC_VECTOR (2 downto 0);
+    Port ( X  : in  STD_LOGIC_VECTOR (2 downto 0);
            EN : in  STD_LOGIC;
-           Y : out  STD_LOGIC_VECTOR (7 downto 0));
+           Y  : out  STD_LOGIC_VECTOR (7 downto 0));
 end Decoder3to8;
 
 architecture Behavioral of Decoder3to8 is

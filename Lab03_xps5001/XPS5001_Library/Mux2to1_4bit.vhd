@@ -1,4 +1,15 @@
+----------------------------------------------------------------------------
+-- Entity:        Mux2to1_4bit
+-- Written By:    Saw Xue Zheng
+-- Date Created:  9/11/2016
+-- Description:   2to1 Mux
+--
+-- Revision History (date, initials, description):
+-- 	11 September 16, xps5001, file created.
 
+-- Dependencies:
+--		None
+----------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 

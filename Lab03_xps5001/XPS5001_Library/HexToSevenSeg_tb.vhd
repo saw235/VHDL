@@ -22,7 +22,7 @@ architecture Behavioral of HexToSevenSeg_tb is
 	-- Unit Under Test (UUT)
    component HexToSevenSeg is
 		port ( HEX      : in  STD_LOGIC_VECTOR (3 downto 0);
-				 SEGMENT : out STD_LOGIC_VECTOR (0 to 6));
+				 SEGMENT  : out STD_LOGIC_VECTOR (0 to 6));
    end component;
     
    --Inputs
@@ -61,7 +61,7 @@ begin
 	-- Instantiate the Unit Under Test (UUT)
    uut: HexToSevenSeg port map (
 		     HEX      => HEX,
-			  SEGMENT => SEGMENT
+			  SEGMENT  => SEGMENT
 	     );
 
    -- Stimulus process

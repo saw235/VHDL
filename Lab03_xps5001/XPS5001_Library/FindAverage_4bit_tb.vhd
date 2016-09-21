@@ -1,30 +1,15 @@
---------------------------------------------------------------------------------
--- Company: 
--- Engineer:
+----------------------------------------------------------------------------
+-- Entity:        FindAverage_4bit_tb
+-- Written By:    Saw Xue Zheng
+-- Date Created:  9/10/2016
+-- Description:   Testbench for FindAverage_4bit
 --
--- Create Date:   01:03:40 09/11/2016
--- Design Name:   
--- Module Name:   C:/Users/User/Documents/CMPEN371/Lab03_xps5001/XPS5001_Library/FindAverage_4bit_tb.vhd
--- Project Name:  Lab03_xps5001
--- Target Device:  
--- Tool versions:  
--- Description:   
--- 
--- VHDL Test Bench Created by ISE for module: FindAverage_4bit
--- 
+-- Revision History (date, initials, description):
+-- 	9 September 16, xps5001, file created.
+
 -- Dependencies:
--- 
--- Revision:
--- Revision 0.01 - File Created
--- Additional Comments:
---
--- Notes: 
--- This testbench has been automatically generated using types std_logic and
--- std_logic_vector for the ports of the unit under test.  Xilinx recommends
--- that these types always be used for the top-level I/O of a design in order
--- to guarantee that the testbench will bind correctly to the post-implementation 
--- simulation model.
---------------------------------------------------------------------------------
+--		FindAverage_4bit
+----------------------------------------------------------------------------
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
  
@@ -41,11 +26,11 @@ ARCHITECTURE behavior OF FindAverage_4bit_tb IS
  
     COMPONENT FindAverage_4bit
     PORT(
-         A : IN  std_logic_vector(3 downto 0);
-         B : IN  std_logic_vector(3 downto 0);
-         C : IN  std_logic_vector(3 downto 0);
-         D : IN  std_logic_vector(3 downto 0);
-         AVERAGE : OUT  std_logic_vector(3 downto 0)
+         A 			: IN  std_logic_vector(3 downto 0);
+         B 			: IN  std_logic_vector(3 downto 0);
+         C 			: IN  std_logic_vector(3 downto 0);
+         D 			: IN  std_logic_vector(3 downto 0);
+         AVERAGE 	: OUT  std_logic_vector(3 downto 0)
         );
     END COMPONENT;
     

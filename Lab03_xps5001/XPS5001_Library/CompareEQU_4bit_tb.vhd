@@ -1,3 +1,15 @@
+----------------------------------------------------------------------------
+-- Entity:        CompareEQU_4bit_tb
+-- Written By:    Saw Xue Zheng
+-- Date Created:  9/11/2016
+-- Description:   Testbench for CompareEQU_4bit
+--
+-- Revision History (date, initials, description):
+-- 	11 Sept 16, xps5001, file created.
+
+-- Dependencies:
+--		CompareEQU_4bit
+----------------------------------------------------------------------------
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
@@ -11,8 +23,8 @@ ARCHITECTURE behavior OF CompareEQU_4bit_tb IS
  
     COMPONENT CompareEQU_4bit
     PORT(
-         A : IN  std_logic_vector(3 downto 0);
-         B : IN  std_logic_vector(3 downto 0);
+         A   : IN  std_logic_vector(3 downto 0);
+         B   : IN  std_logic_vector(3 downto 0);
          EQU : OUT  std_logic
         );
     END COMPONENT;

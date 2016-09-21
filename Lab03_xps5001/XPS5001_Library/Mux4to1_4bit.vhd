@@ -15,12 +15,12 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 
 entity Mux4to1_4bit is
-    Port ( X0 : in  STD_LOGIC_VECTOR (3 downto 0);
-           X1 : in  STD_LOGIC_VECTOR (3 downto 0);
-           X2 : in  STD_LOGIC_VECTOR (3 downto 0);
-           X3 : in  STD_LOGIC_VECTOR (3 downto 0);
+    Port ( X0  : in  STD_LOGIC_VECTOR (3 downto 0);
+           X1  : in  STD_LOGIC_VECTOR (3 downto 0);
+           X2  : in  STD_LOGIC_VECTOR (3 downto 0);
+           X3  : in  STD_LOGIC_VECTOR (3 downto 0);
            SEL : in  STD_LOGIC_VECTOR (1 downto 0);
-           Y : out  STD_LOGIC_VECTOR (3 downto 0));
+           Y   : out  STD_LOGIC_VECTOR (3 downto 0));
 end Mux4to1_4bit;
 
 architecture Behavioral of Mux4to1_4bit is

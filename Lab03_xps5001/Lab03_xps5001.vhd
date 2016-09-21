@@ -1,3 +1,22 @@
+----------------------------------------------------------------------------
+-- Entity:        Lab03_xps5001
+-- Written By:    Saw Xue Zheng
+-- Date Created:  9/10/2016
+-- Description:   TopLevel for Lab03
+--						Output different value to SEGMENT depending on the 
+--						BTN combinations
+-- Revision History (date, initials, description):
+-- 	9 September 16, xps5001, file created.
+-- 	17 September 16, xps5001, changed to use generics
+
+-- Dependencies:
+--		AdderSubtractor_4bit
+--		FindMax_4bit
+--		FindMin_4bit
+--		FindAverage_4bit
+--		Mux2to1_4bit
+--		Mux4to1_4bit
+----------------------------------------------------------------------------
 library IEEE;
 library XPS5001_Library;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -33,7 +52,7 @@ architecture Structural of Lab03_xps5001 is
 	
 begin
 
-	AddSub : AdderSubtractor_4bit port map(
+	AddSub : AdderSubtractor generic map (n => 4) port map(
 				A 			=> SWITCH(15 downto 12),
 				B 			=> SWITCH(11 downto 8),
 				OVERFLOW => OPEN,
@@ -74,7 +93,7 @@ begin
 				Y 		=> SUMorA_int
 	);
 	
-	inst_mux1 : Mux4to1_4bit port map(
+	inst_mux1 : Mux4to1 generic map (n => 4) port map(
 				X0		=> SUMorA_int,
 				X1 	=> MAX_int,
 				X2		=> MIN_int,
@@ -107,8 +126,8 @@ begin
 	disp_sel_en <= BTNR nor BTNL;
 	disp_sel_int <= "00" when ( disp_sel_en = '0') else
 						 "01" when ( BTNU = '1' and BTNC = '0' and BTND = '0' and disp_sel_en = '1') else
-						 "10" when ( BTNU = '0' and BTNC = '1' and BTND = '0' and disp_sel_en = '1') else
-						 "11" when ( BTNU = '0' and BTNC = '0' and BTND = '1' and disp_sel_en = '1') else
+						 "11" when ( BTNU = '0' and BTNC = '1' and BTND = '0' and disp_sel_en = '1') else
+						 "10" when ( BTNU = '0' and BTNC = '0' and BTND = '1' and disp_sel_en = '1') else
 						 "00";
 	
 	-- Anode_Sel

@@ -1,4 +1,15 @@
+----------------------------------------------------------------------------
+-- Entity:        Decoder3to8_tb
+-- Written By:    Saw Xue Zheng
+-- Date Created:  9/11/2016
+-- Description:   Testbench for Decoder3to8
+--
+-- Revision History (date, initials, description):
+-- 	11 Sept 16, xps5001, file created.
 
+-- Dependencies:
+--		Decoder3to8
+----------------------------------------------------------------------------
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
@@ -11,15 +22,15 @@ ARCHITECTURE behavior OF Decoder3to8_tb IS
  
     COMPONENT Decoder3to8
     PORT(
-         X : IN  std_logic_vector(2 downto 0);
+         X  : IN  std_logic_vector(2 downto 0);
          EN : IN  std_logic;
-         Y : OUT  std_logic_vector(7 downto 0)
+         Y  : OUT  std_logic_vector(7 downto 0)
         );
     END COMPONENT;
     
 
    --Inputs
-   signal X : std_logic_vector(2 downto 0) := (others => '0');
+   signal X  : std_logic_vector(2 downto 0) := (others => '0');
    signal EN : std_logic := '0';
 
  	--Outputs
@@ -51,9 +62,9 @@ ARCHITECTURE behavior OF Decoder3to8_tb IS
 BEGIN
  
    uut: Decoder3to8 PORT MAP (
-          X => X,
+          X  => X,
           EN => EN,
-          Y => Y
+          Y  => Y
         );
 
    -- Stimulus process

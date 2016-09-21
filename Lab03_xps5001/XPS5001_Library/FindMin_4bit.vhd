@@ -1,3 +1,16 @@
+----------------------------------------------------------------------------
+-- Entity:        FindMax_4bit
+-- Written By:    Saw Xue Zheng
+-- Date Created:  9/10/2016
+-- Description:   Output the Min of A, B, C, D
+--
+-- Revision History (date, initials, description):
+-- 	9 September 16, xps5001, file created.
+
+-- Dependencies:
+--		Mux2to1_4bit
+--    CompareLES_4bit
+----------------------------------------------------------------------------
 library IEEE;
 library XPS5001_Library;
 use IEEE.STD_LOGIC_1164.ALL;
@@ -41,17 +54,17 @@ begin
 				Y 		=> Min);
 				
 	--LES_Comparators
-	cmp_LES0 :	CompareLES_4bit port map(
+	cmp_LES0 :	CompareLES generic map (n => 4) port map(
 						A 		=> B,
 						B 		=> A,
 						LES 	=> LES_int0);
 
-	cmp_LES1 :	CompareLES_4bit port map(
+	cmp_LES1 :	CompareLES generic map (n => 4) port map(
 						A 		=> D,
 						B 		=> C,
 						LES 	=> LES_int1);
 
-	cmp_LES2 :	CompareLES_4bit port map(
+	cmp_LES2 :	CompareLES generic map (n => 4) port map(
 						A 		=> mux1_out_int,
 						B 		=> mux0_out_int,
 						LES 	=> LES_int2);						

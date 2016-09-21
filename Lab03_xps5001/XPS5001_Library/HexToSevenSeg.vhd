@@ -15,7 +15,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 
 entity HexToSevenSeg is
-    Port ( HEX : in  STD_LOGIC_VECTOR (3 downto 0);
+    Port ( HEX 	 : in  STD_LOGIC_VECTOR (3 downto 0);
            SEGMENT : out  STD_LOGIC_VECTOR (0 to 6));
 end HexToSevenSeg;
 

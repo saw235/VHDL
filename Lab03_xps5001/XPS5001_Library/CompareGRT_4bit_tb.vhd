@@ -1,3 +1,15 @@
+----------------------------------------------------------------------------
+-- Entity:        CompareGRT_4bit_tb
+-- Written By:    Saw Xue Zheng
+-- Date Created:  9/11/2016
+-- Description:   Testbench for CompareGRT_4bit
+--
+-- Revision History (date, initials, description):
+-- 	11 Sept 16, xps5001, file created.
+
+-- Dependencies:
+--		CompareGRT_4bit
+----------------------------------------------------------------------------
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
@@ -11,8 +23,8 @@ ARCHITECTURE behavior OF CompareGRT_4bit_tb IS
  
     COMPONENT CompareGRT_4bit
     PORT(
-         A : IN  std_logic_vector(3 downto 0);
-         B : IN  std_logic_vector(3 downto 0);
+         A   : IN  std_logic_vector(3 downto 0);
+         B   : IN  std_logic_vector(3 downto 0);
          GRT : OUT  std_logic
         );
     END COMPONENT;

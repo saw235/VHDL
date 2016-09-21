@@ -6,9 +6,9 @@
 --
 -- Revision History (date, initials, description):
 -- 	27 Aug 16, xps5001, file created.
-
+-- 	17 Sept 16, xps5001, changed component to generics
 -- Dependencies:
---		AdderSubtractor_4bit
+--		AdderSubtractor
 ----------------------------------------------------------------------------
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
@@ -21,12 +21,13 @@ ARCHITECTURE behavior OF AdderSubtractor_4bit_tb IS
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT AdderSubtractor_4bit
+    COMPONENT AdderSubtractor
+	 Generic ( n : integer := 8);
     PORT(
-         A : IN  std_logic_vector(3 downto 0);
-         B : IN  std_logic_vector(3 downto 0);
+         A 			: IN  std_logic_vector(n-1 downto 0);
+         B 			: IN  std_logic_vector(n-1 downto 0);
          SUBTRACT : IN  std_logic;
-         SUM : OUT  std_logic_vector(3 downto 0);
+         SUM 		: OUT  std_logic_vector(n-1 downto 0);
          OVERFLOW : OUT  std_logic
         );
     END COMPONENT;
@@ -45,12 +46,12 @@ ARCHITECTURE behavior OF AdderSubtractor_4bit_tb IS
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: AdderSubtractor_4bit PORT MAP (
-          A => A,
-          B => B,
-          SUBTRACT => SUBTRACT,
-          SUM => SUM,
-          OVERFLOW => OVERFLOW
+   uut: AdderSubtractor GENERIC MAP (N => 4) PORT MAP (
+          A 			=> A,
+          B 			=> B,
+          SUBTRACT	=> SUBTRACT,
+          SUM			=> SUM,
+          OVERFLOW 	=> OVERFLOW
         );
 
 
@@ -114,7 +115,7 @@ BEGIN
 		end loop;
 		
 			
-		report "All test cases are completed.";
+		report "All test cases are completed sucessfully.";
       wait;
    end process;
 

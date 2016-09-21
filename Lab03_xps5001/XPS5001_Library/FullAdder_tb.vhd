@@ -23,11 +23,11 @@ architecture Behavioral of FullAdder_tb is
 
 	-- Unit Under Test (UUT)
 	component FullAdder is
-		Port ( A    : in  STD_LOGIC;
-				 B    : in  STD_LOGIC;
+		Port ( A    	: in  STD_LOGIC;
+				 B   	 	: in  STD_LOGIC;
 				 C_in    : in  STD_LOGIC;
 				 C_out   : out STD_LOGIC;
-				 Sum : out STD_LOGIC);
+				 Sum 		: out STD_LOGIC);
 	end component FullAdder;
 
    --Inputs
@@ -47,7 +47,7 @@ begin
           B     => B,
           C_in  => C_in,
           C_out => C_out,
-          Sum  => SUM
+          Sum   => SUM
         );
 
    -- Stimulus process

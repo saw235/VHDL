@@ -16,11 +16,11 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 
 entity RippleCarryAdder_4bit is
-    Port ( A : in  STD_LOGIC_VECTOR (3 downto 0);
-           B : in  STD_LOGIC_VECTOR (3 downto 0);
-           C_in : in  STD_LOGIC;
-           C_out : out  STD_LOGIC;
-           SUM : out  STD_LOGIC_VECTOR (3 downto 0));
+    Port ( A 		: in  STD_LOGIC_VECTOR (3 downto 0);
+           B 		: in  STD_LOGIC_VECTOR (3 downto 0);
+           C_in 	: in  STD_LOGIC;
+           C_out 	: out  STD_LOGIC;
+           SUM 	: out  STD_LOGIC_VECTOR (3 downto 0));
 end RippleCarryAdder_4bit;
 
 architecture Structural of RippleCarryAdder_4bit is
@@ -28,11 +28,11 @@ architecture Structural of RippleCarryAdder_4bit is
 	-- Components
 		--Full Adder
 	component FullAdder is 
-		Port( A : in  STD_LOGIC;
-				B : in  STD_LOGIC;
-				C_in : in  STD_LOGIC;
+		Port( A	 	: in  STD_LOGIC;
+				B	 	: in  STD_LOGIC;
+				C_in	: in  STD_LOGIC;
 				C_out : out  STD_LOGIC;
-				Sum : out  STD_LOGIC);
+				Sum 	: out  STD_LOGIC);
 	end component;
 	
 
@@ -51,7 +51,7 @@ begin
        B     => B(0),
        C_in  => C_in,
        C_out => Carry0,
-       Sum  => SUM(0)
+       Sum   => SUM(0)
 	);
 	
 	FA1 : FullAdder port map(
@@ -59,7 +59,7 @@ begin
        B     => B(1),
        C_in  => Carry0,
        C_out => Carry1,
-       Sum  => SUM(1)
+       Sum   => SUM(1)
 	);
 	
 	FA2 : FullAdder port map(
@@ -67,7 +67,7 @@ begin
        B     => B(2),
        C_in  => Carry1,
        C_out => Carry2,
-       Sum  => SUM(2)
+       Sum   => SUM(2)
 	);
 	
 	FA3 : FullAdder port map(
@@ -75,7 +75,7 @@ begin
        B     => B(3),
        C_in  => Carry2,
        C_out => C_out,
-       Sum  => SUM(3)
+       Sum   => SUM(3)
 	);
 	
 	
