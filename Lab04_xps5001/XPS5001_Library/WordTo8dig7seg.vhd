@@ -37,6 +37,17 @@ architecture Structural of WordTo8dig7seg is
 begin
 	
 	mux_sel <= count_int;
+	
+	
+	--counter: counts up to 8
+	--depending on the incoming pulse
+	count	 : Counter generic map( n => 3) port map (
+					EN  => STROBE,
+					CLK => CLK,
+					CLR => '0',
+					Q	 => count_int
+	);
+	
 	--8 to 1 mux
 	with mux_sel select
 		hex_int <= WORD(31 downto 28) when "111",
@@ -57,20 +68,12 @@ begin
 	
 	D3to8 : Decoder3to8 port map(
 			X	=> count_int,
-			EN	=> '1',
+			EN	=> CLK,
 			Y	=> decode_int
 	);
+
 	
-	--counter: counts up to 8
-	--depending on the incoming pulse
-	count	 : Counter generic map( n => 3) port map (
-					EN  => STROBE,
-					CLK => CLK,
-					CLR => '0',
-					Q	 => count_int
-	);
-	
-	anode_mask <= ("11111111" xor decode_int) or DIGIT_EN;
+	anode_mask <= ("11111111" xor decode_int) or (DIGIT_EN xor "11111111");
 	
 	ANODE <= anode_mask;
 

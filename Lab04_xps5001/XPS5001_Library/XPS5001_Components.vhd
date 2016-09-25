@@ -176,11 +176,11 @@ package XPS5001_Components is
 	
 	component Reg
 	Generic ( n : integer := 8);
-	    Port ( D 	: in  STD_LOGIC_VECTOR (n downto 0);
+	    Port ( D 	: in  STD_LOGIC_VECTOR (n-1 downto 0);
            LOAD 	: in  STD_LOGIC;
            CLK 	: in  STD_LOGIC;
            CLR 	: in  STD_LOGIC;
-           Q 		: out  STD_LOGIC_VECTOR (n downto 0) := (others => '0'));
+           Q 		: out  STD_LOGIC_VECTOR (n-1 downto 0) := (others => '0'));
 	end component;
 
 	component Counter
@@ -230,6 +230,15 @@ package XPS5001_Components is
            DIGIT_EN 	: in  STD_LOGIC_VECTOR (7 downto 0);
            ANODE 		: out  STD_LOGIC_VECTOR (7 downto 0);
            SEGMENT 	: out  STD_LOGIC_VECTOR (0 to 6));
+	end component;
+	
+	component Reg_SIPO is
+	 Generic ( n : integer := 8);
+    Port ( D 			: in  STD_LOGIC;
+           SHIFT_EN 	: in  STD_LOGIC;
+           CLK 		: in  STD_LOGIC;
+           CLR 		: in  STD_LOGIC;
+           Q 			: out  STD_LOGIC_VECTOR (n-1 downto 0) := (others => '0'));
 	end component;
 	
 end XPS5001_Components;
