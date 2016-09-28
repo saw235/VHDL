@@ -81,7 +81,7 @@ architecture Structural of Lab04_xps5001 is
 
 begin
 	
-	--400hz Pulse : Pulse once every 400 count
+	--400hz Pulse
 	pulse_gen_400hz : PulseGenerator generic map( n => 18, maxCount => 249999)
 		port map(
 					EN 	=> '1',
@@ -90,7 +90,7 @@ begin
 					PULSE => pulse_400hz--internal pulse
 				);
 
-	--200hz Pulse : Pulse once every 500 count
+	--200hz Pulse
 	pulse_gen_200hz : PulseGenerator generic map( n => 19, maxCount => 499999)
 		port map(
 					EN 	=> '1',
