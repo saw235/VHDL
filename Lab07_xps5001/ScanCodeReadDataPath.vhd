@@ -69,8 +69,7 @@ begin
 	
 	CNT_LES_10 <= '1' when ( unsigned(counter_in) < 10) else '0';
 
-	SCAN_CODE <= reg_out_int(7 downto 0) when (CODE_READY_OUT = '1') else
-					 (others => '0');
-
+	SCAN_CODE <= reg_out_int(7 downto 0);
+	
 end Structural;
 

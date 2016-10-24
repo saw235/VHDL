@@ -34,15 +34,15 @@ end PS2KBD_ScanCodeReader;
 architecture Structural of PS2KBD_ScanCodeReader is
 	
 	component ScanCodeReadFSM is
-		 Port ( STATUS_in 	: in  STD_LOGIC_VECTOR (1 downto 0);
+		 Port ( STATUS_in 	: in  STD_LOGIC_VECTOR (0 to 1);
 				  CLK 			: in  STD_LOGIC;
 				  RESET 			: in  STD_LOGIC;
-				  CONTROL_out 	: out  STD_LOGIC_VECTOR (3 downto 0);
+				  CONTROL_out 	: out  STD_LOGIC_VECTOR (0 to 3);
 				  DEBUG_out 	: out  STD_LOGIC_VECTOR (3 downto 0));
 	end component;
 
 	component ScanCodeReadDataPath is
-    Port ( CONTROL_in : in  STD_LOGIC_VECTOR (3 downto 0);
+    Port ( CONTROL_in : in  STD_LOGIC_VECTOR (0 to 3);
            KBDATA 	 : in  STD_LOGIC;
            CLK 		 : in  STD_LOGIC;
 			  RESET		 : in  STD_LOGIC;
