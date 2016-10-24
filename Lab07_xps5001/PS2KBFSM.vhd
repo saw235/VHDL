@@ -14,10 +14,10 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 
 entity PS2KBFSM is
-    Port ( STATUS_in 	: in  STD_LOGIC_VECTOR (0 to 9);
+    Port ( STATUS_in 	: in  STD_LOGIC_VECTOR (0 to 8);
            CLK 			: in  STD_LOGIC;
            RESET 			: in  STD_LOGIC;
-           CONTROL_out 	: out  STD_LOGIC_VECTOR (0 to 11);
+           CONTROL_out 	: out  STD_LOGIC_VECTOR (0 to 10);
            DEBUG_out 	: out  STD_LOGIC_VECTOR (7 downto 0));
 end PS2KBFSM;
 
@@ -40,8 +40,7 @@ architecture Behavioral of PS2KBFSM is
 	--inputs for FSM
 	alias CODEREADY		is Status_in(0);
 	alias SCANCODE			is Status_in(1 to 8);
-	alias TIMEOUT			is Status_in(9);
-	
+
 	--outputs for FSM
 	alias SHIFTBYTE		is CONTROL_out(0);
 	
@@ -60,8 +59,6 @@ architecture Behavioral of PS2KBFSM is
 	alias SHIFTPRESSED	is CONTROL_out(9);
 	alias SHIFTRELEASED	is CONTROL_out(10);
 	
-	alias TIMEOUTEN		is CONTROL_out(11);
-
 
 begin
 	
@@ -96,7 +93,6 @@ begin
 				RIGHTRELEASED	<= '0';
 				SHIFTPRESSED	<= '0';
 				SHIFTRELEASED	<= '0';
-				TIMEOUTEN		<= '0';
 				
 				nextState <= IDLE;
 				
@@ -112,7 +108,6 @@ begin
 				RIGHTRELEASED	<= '0';
 				SHIFTPRESSED	<= '0';
 				SHIFTRELEASED	<= '0';
-				TIMEOUTEN		<= '0';	
 				
 				if (CODEREADY = '1') then
 					nextState <= SHIFTBUF_0;
@@ -131,8 +126,7 @@ begin
 				RIGHTPRESSED 	<= '0';
 				RIGHTRELEASED	<= '0';
 				SHIFTPRESSED	<= '0';
-				SHIFTRELEASED	<= '0';
-				TIMEOUTEN		<= '0';		
+				SHIFTRELEASED	<= '0';	
 				
 				if (SCANCODE = x"E0") then
 					nextState <= WAIT_1;
@@ -163,8 +157,7 @@ begin
 				RIGHTPRESSED 	<= '0';
 				RIGHTRELEASED	<= '0';
 				SHIFTPRESSED	<= '0';
-				SHIFTRELEASED	<= '0';
-				TIMEOUTEN		<= '0';		
+				SHIFTRELEASED	<= '0';	
 			
 				if (SCANCODE = x"75") then
 					nextState <= UPKEYPRESSED;
@@ -194,7 +187,6 @@ begin
 				RIGHTRELEASED	<= '0';
 				SHIFTPRESSED	<= '0';
 				SHIFTRELEASED	<= '0';
-				TIMEOUTEN		<= '0';	
 			
 				if (SCANCODE = x"75") then
 					nextState <= UPKEYRELEASED;
@@ -222,7 +214,6 @@ begin
 				RIGHTRELEASED	<= '0';
 				SHIFTPRESSED	<= '0';
 				SHIFTRELEASED	<= '0';
-				TIMEOUTEN		<= '0';			
 				
 				nextState <= IDLE;				
 			
@@ -238,7 +229,6 @@ begin
 				RIGHTRELEASED	<= '0';
 				SHIFTPRESSED	<= '0';
 				SHIFTRELEASED	<= '0';
-				TIMEOUTEN		<= '0';		
 			
 				nextState <= IDLE;
 			
@@ -254,7 +244,6 @@ begin
 				RIGHTRELEASED	<= '0';
 				SHIFTPRESSED	<= '0';
 				SHIFTRELEASED	<= '0';
-				TIMEOUTEN		<= '0';
 				
 				nextState <= IDLE;				
 				
@@ -270,7 +259,6 @@ begin
 				RIGHTRELEASED	<= '0';
 				SHIFTPRESSED	<= '0';
 				SHIFTRELEASED	<= '0';
-				TIMEOUTEN		<= '0';				
 			
 				nextState <= IDLE;
 				
@@ -286,7 +274,6 @@ begin
 				RIGHTRELEASED	<= '0';
 				SHIFTPRESSED	<= '0';
 				SHIFTRELEASED	<= '0';
-				TIMEOUTEN		<= '0';
 
 				nextState <= IDLE;				
 				
@@ -302,7 +289,6 @@ begin
 				RIGHTRELEASED	<= '0';
 				SHIFTPRESSED	<= '0';
 				SHIFTRELEASED	<= '0';
-				TIMEOUTEN		<= '0';
 
 				nextState <= IDLE;
 				
@@ -318,7 +304,6 @@ begin
 				RIGHTRELEASED	<= '0';
 				SHIFTPRESSED	<= '0';
 				SHIFTRELEASED	<= '0';
-				TIMEOUTEN		<= '0';			
 
 				nextState <= IDLE;
 
@@ -334,7 +319,6 @@ begin
 				RIGHTRELEASED	<= '1';
 				SHIFTPRESSED	<= '0';
 				SHIFTRELEASED	<= '0';
-				TIMEOUTEN		<= '0';			
 
 				nextState <= IDLE;
 
@@ -350,7 +334,6 @@ begin
 				RIGHTRELEASED	<= '0';
 				SHIFTPRESSED	<= '1';
 				SHIFTRELEASED	<= '0';
-				TIMEOUTEN		<= '0';
 
 				nextState <= IDLE;
 				
@@ -366,7 +349,6 @@ begin
 				RIGHTRELEASED	<= '0';
 				SHIFTPRESSED	<= '0';
 				SHIFTRELEASED	<= '1';
-				TIMEOUTEN		<= '0';			
 			
 				nextState <= IDLE;
 
@@ -382,7 +364,6 @@ begin
 				RIGHTRELEASED	<= '0';
 				SHIFTPRESSED	<= '0';
 				SHIFTRELEASED	<= '0';
-				TIMEOUTEN		<= '1';	
 
 				if (CODEREADY = '1') then
 					nextState <= SHIFTBUF_1;
@@ -404,7 +385,6 @@ begin
 				RIGHTRELEASED	<= '0';
 				SHIFTPRESSED	<= '0';
 				SHIFTRELEASED	<= '0';
-				TIMEOUTEN		<= '1';		
 				
 				if (CODEREADY = '1') then
 					nextState <= SHIFTBUF_2;
@@ -425,7 +405,6 @@ begin
 				RIGHTRELEASED	<= '0';
 				SHIFTPRESSED	<= '0';
 				SHIFTRELEASED	<= '0';
-				TIMEOUTEN		<= '0';
 			
 				nextState <= CHECKBUF_0;
 			
@@ -442,7 +421,6 @@ begin
 				RIGHTRELEASED	<= '0';
 				SHIFTPRESSED	<= '0';
 				SHIFTRELEASED	<= '0';
-				TIMEOUTEN		<= '0';		
 			
 				nextState <= CHECKKEYPRESSED;
 			
@@ -459,7 +437,6 @@ begin
 				RIGHTRELEASED	<= '0';
 				SHIFTPRESSED	<= '0';
 				SHIFTRELEASED	<= '0';
-				TIMEOUTEN		<= '0';		
 			
 				nextState <= CHECKKEYRELEASED;
 

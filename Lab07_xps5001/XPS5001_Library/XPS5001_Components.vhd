@@ -266,6 +266,15 @@ package XPS5001_Components is
 			  Q_bar	: out STD_LOGIC);
 	end component;
 	
+	component TimeOut is
+	 Generic ( n     : integer; 
+				  nbits : integer);
+	 Port(	EN       : in    STD_LOGIC;
+				CLK      : in    STD_LOGIC;
+				CLR      : in    STD_LOGIC;
+				Timeout  : out   STD_LOGIC);
+	end component;
+	
 end XPS5001_Components;
 ----------------------------------------------------------------------------
 

@@ -21,9 +21,9 @@ entity PS2KBDP is
     Port ( CLK					: in   STD_LOGIC;
 			  RESET				: in 	 STD_LOGIC;
 			  CODEREADY_in		: in 	 STD_LOGIC;
-			  Control_in 		: in   STD_LOGIC_VECTOR (0 to 11);
+			  Control_in 		: in   STD_LOGIC_VECTOR (0 to 10);
            ScanCode_in		: in   STD_LOGIC_VECTOR (7 downto 0);
-           Status_out 		: out  STD_LOGIC_VECTOR (0 to 9);
+           Status_out 		: out  STD_LOGIC_VECTOR (0 to 8);
            Last4ScanCode 	: out  STD_LOGIC_VECTOR (31 downto 0);
 			  UP					: out  STD_LOGIC;
 			  DOWN				: out  STD_LOGIC;
@@ -37,7 +37,6 @@ architecture Structural of PS2KBDP is
 	--inputs for FSM
 	alias CODEREADY		is Status_out(0);
 	alias SCANCODE			is Status_out(1 to 8);
-	alias TIMEOUT			is Status_out(9);
 	
 	--outputs for FSM
 	alias SHIFTBYTE		is Control_in(0);
@@ -56,8 +55,6 @@ architecture Structural of PS2KBDP is
 	
 	alias SHIFTPRESSED	is Control_in(9);
 	alias SHIFTRELEASED	is Control_in(10);
-	
-	alias TIMEOUTEN		is Control_in(11);
 	
 	
 	

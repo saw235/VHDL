@@ -21,11 +21,11 @@ use XPS5001_Library.XPS5001_Components.ALL;
 
 
 entity ScanCodeReadDataPath is
-    Port ( CONTROL_in : in  STD_LOGIC_VECTOR (0 to 3);
-           KBDATA 	 : in  STD_LOGIC;
-           CLK 		 : in  STD_LOGIC;
-			  RESET		 : in  STD_LOGIC;
-           STATUS_out : out  STD_LOGIC;
+    Port ( CONTROL_in : in  STD_LOGIC_VECTOR (0 to 5);
+           KBDATA 	  : in  STD_LOGIC;
+           CLK 		  : in  STD_LOGIC;
+			  RESET	  : in  STD_LOGIC;
+           STATUS_out : out  STD_LOGIC_VECTOR (0 to 1);
            SCAN_CODE  : out  STD_LOGIC_VECTOR (7 downto 0));
 end ScanCodeReadDataPath;
 
@@ -35,14 +35,17 @@ architecture Structural of ScanCodeReadDataPath is
 	alias CODE_READY_OUT	is CONTROL_in(1);
 	alias LOAD_BIT_OUT	is CONTROL_in(2);
 	alias INC_COUNT 		is CONTROL_in(3);
+	alias TIMEOUT_EN 		is CONTROL_in(4);
+	alias TIMEOUT_CLR		is CONTROL_in(5);	
 	
 	
-	alias CNT_LES_10 is STATUS_out;
+	alias CNT_LES_10       is STATUS_out(0);
+	alias TIMEOUT_out      is STATUS_out(1);
 	
-	signal reg_reset_int : STD_LOGIC;
-	signal counter_in 	: STD_LOGIC_VECTOR(3 downto 0);
-	signal reg_out_int 	: STD_LOGIC_VECTOR(9 downto 0);
 	
+	signal reg_reset_int  : STD_LOGIC;
+	signal counter_in 	 : STD_LOGIC_VECTOR(3 downto 0);
+	signal reg_out_int 	 : STD_LOGIC_VECTOR(9 downto 0);
 begin
 
 	reg_reset_int <= '1' when (INIT_COUNT = '1' or RESET = '1') else
@@ -51,25 +54,34 @@ begin
 	
 	
 	reg : Reg_SIPO generic map (n => 10, clrto => '0') port map(
-		 D 			=> KBDATA,			
-		 SHIFT_EN 	=> LOAD_BIT_OUT,
-		 CLK 			=> CLK,
-		 CLR 			=> reg_reset_int,
-		 Q 			=> reg_out_int
+		 D 			    => KBDATA,			
+		 SHIFT_EN 	    => LOAD_BIT_OUT,
+		 CLK 				 => CLK,
+		 CLR 				 => reg_reset_int,
+		 Q 			    => reg_out_int
 	);
 	
 	
 	
 	cnt : Counter generic map ( n => 4) port map(
-			 EN 	=> INC_COUNT, 	 
-	       CLK  => CLK,
-	       CLR  => reg_reset_int,
-	       Q 	=> counter_in
+				EN 	 => INC_COUNT, 	 
+	         CLK    => CLK,
+	         CLR    => reg_reset_int,
+	         Q 	    => counter_in
 	);
 	
+	
+	T_O : TimeOut generic map (n => 20000, nbits => 15) port map(
+					EN        => TIMEOUT_EN,
+               CLK       => CLK,
+               CLR       => TIMEOUT_CLR,
+               Timeout   => TIMEOUT_out
+    );
+
 	CNT_LES_10 <= '1' when ( unsigned(counter_in) < 10) else '0';
 
-	SCAN_CODE <= reg_out_int(7 downto 0);
-	
+	SCAN_CODE <= reg_out_int(7 downto 0) when (CODE_READY_OUT = '1') else
+					 (others => '0');
+
 end Structural;
 

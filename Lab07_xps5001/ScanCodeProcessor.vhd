@@ -32,10 +32,10 @@ end ScanCodeProcessor;
 architecture Structural of ScanCodeProcessor is
 
 	component PS2KBFSM is
-		 Port ( STATUS_in 	: in  STD_LOGIC_VECTOR (0 to 9);
+		 Port ( STATUS_in 	: in  STD_LOGIC_VECTOR (0 to 8);
 				  CLK 			: in  STD_LOGIC;
 				  RESET 			: in  STD_LOGIC;
-				  CONTROL_out 	: out  STD_LOGIC_VECTOR (0 to 11);
+				  CONTROL_out 	: out  STD_LOGIC_VECTOR (0 to 10);
 				  DEBUG_out 	: out  STD_LOGIC_VECTOR (7 downto 0));
 	end component;
 
@@ -43,9 +43,9 @@ architecture Structural of ScanCodeProcessor is
 		 Port ( CLK					: in   STD_LOGIC;
 				  RESET				: in 	 STD_LOGIC;
 				  CODEREADY_in		: in 	 STD_LOGIC;
-				  Control_in 		: in   STD_LOGIC_VECTOR (0 to 11);
+				  Control_in 		: in   STD_LOGIC_VECTOR (0 to 10);
 				  ScanCode_in		: in   STD_LOGIC_VECTOR (7 downto 0);
-				  Status_out 		: out  STD_LOGIC_VECTOR (0 to 9);
+				  Status_out 		: out  STD_LOGIC_VECTOR (0 to 8);
 				  Last4ScanCode 	: out  STD_LOGIC_VECTOR (31 downto 0);
 				  UP					: out  STD_LOGIC;
 				  DOWN				: out  STD_LOGIC;
@@ -54,8 +54,8 @@ architecture Structural of ScanCodeProcessor is
 				  SHIFT				: out  STD_LOGIC);
 	end component;	
 	
-	signal dp_status_out_int 	: STD_LOGIC_VECTOR (0 to 9);
-	signal fsm_control_out_int : STD_LOGIC_VECTOR (0 to 11);	
+	signal dp_status_out_int 	: STD_LOGIC_VECTOR (0 to 8);
+	signal fsm_control_out_int : STD_LOGIC_VECTOR (0 to 10);	
 	
 begin
 	

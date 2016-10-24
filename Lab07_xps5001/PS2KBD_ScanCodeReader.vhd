@@ -23,40 +23,41 @@ use XPS5001_Library.XPS5001_Components.ALL;
 
 
 entity PS2KBD_ScanCodeReader is
-    Port ( CLK : in  STD_LOGIC;
-           RESET : in  STD_LOGIC;
-           KB_DAT : in  STD_LOGIC;
-           KB_CLK : in  STD_LOGIC;
-           CODE_READY : out  STD_LOGIC;
-           SCAN_CODE : out  STD_LOGIC_VECTOR (7 downto 0));
+    Port ( CLK          : in  STD_LOGIC;
+           RESET        : in  STD_LOGIC;
+           KB_DAT       : in  STD_LOGIC;
+           KB_CLK       : in  STD_LOGIC;
+           CODE_READY   : out  STD_LOGIC;
+           SCAN_CODE    : out  STD_LOGIC_VECTOR (7 downto 0));
 end PS2KBD_ScanCodeReader;
 
 architecture Structural of PS2KBD_ScanCodeReader is
 	
 	component ScanCodeReadFSM is
-		 Port ( STATUS_in 	: in  STD_LOGIC_VECTOR (0 to 1);
+		 Port ( STATUS_in 	: in  STD_LOGIC_VECTOR (0 to 2);
 				  CLK 			: in  STD_LOGIC;
-				  RESET 			: in  STD_LOGIC;
-				  CONTROL_out 	: out  STD_LOGIC_VECTOR (0 to 3);
+				  RESET 	 	   : in  STD_LOGIC;
+				  CONTROL_out 	: out  STD_LOGIC_VECTOR (0 to 5);
 				  DEBUG_out 	: out  STD_LOGIC_VECTOR (3 downto 0));
 	end component;
 
 	component ScanCodeReadDataPath is
-    Port ( CONTROL_in : in  STD_LOGIC_VECTOR (0 to 3);
-           KBDATA 	 : in  STD_LOGIC;
-           CLK 		 : in  STD_LOGIC;
-			  RESET		 : in  STD_LOGIC;
-           STATUS_out : out  STD_LOGIC;
-           SCAN_CODE  : out  STD_LOGIC_VECTOR (7 downto 0));
+    Port ( CONTROL_in   : in  STD_LOGIC_VECTOR (0 to 5);
+           KBDATA 	   : in  STD_LOGIC;
+           CLK 		   : in  STD_LOGIC;
+			  RESET	    	: in  STD_LOGIC;
+           STATUS_out   : out  STD_LOGIC_VECTOR (0 to 1);
+           SCAN_CODE    : out  STD_LOGIC_VECTOR (7 downto 0));
 	end component;
 
 
-	signal fsm_status_in_int 	: std_logic_vector (0 to 1);
-	signal fsm_control_out_int : std_logic_vector (0 to 3);
+	signal fsm_status_in_int 	: std_logic_vector (0 to 2);
+	signal fsm_control_out_int : std_logic_vector (0 to 5);
 	
-	signal dp_status_out_int 	: std_logic;
+	signal dp_status_out_int 	: std_logic_vector(0 to 1);
 
-	alias CNT_LES_10 is dp_status_out_int;
+	alias CNT_LES_10       is dp_status_out_int(0);
+	alias TIMEOUT_out      is dp_status_out_int(1);
 
 	alias INIT_COUNT		is fsm_control_out_int(0);
 	alias CODE_READY_OUT	is fsm_control_out_int(1);
@@ -66,13 +67,13 @@ architecture Structural of PS2KBD_ScanCodeReader is
 begin
 
 	
-	fsm_status_in_int <= KB_CLK & CNT_LES_10;
+	fsm_status_in_int <= KB_CLK & CNT_LES_10 & TIMEOUT_out;
 	
 	scrFSM : ScanCodeReadFSM port map(
-			STATUS_in 	=> fsm_status_in_int,
+		  STATUS_in 	=> fsm_status_in_int,
 	      CLK 			=> CLK,
 	      RESET 		=> RESET,
-	      CONTROL_out => fsm_control_out_int,
+	      CONTROL_out   => fsm_control_out_int,
 	      DEBUG_out 	=> open
 	);
 
