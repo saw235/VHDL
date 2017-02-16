@@ -10,4 +10,6 @@ Everything related to VHDL design.
 |Lab05_xps5001|Traffic Light Controller	| Lab05_xps5001.vhd
 |Lab06_xps5001|Candy Bar Machine Controller | Lab06_xps5001.vhd
 |Lab07_xps5001|PS/2 Keyboard Controller | Lab07_xps5001_kmr5802.vhd
-|CMPEN 270| Old libraries done for introductory digital design class. Work done includes basic latches, flip-flops, counters, clock dividers, test benches, TUG-O-WAR games etc... |
+|Lab08_xps5001_kmr5802|VGA Controller for 480 640 Resolution | TopLevel.vhd
+|Lab09_xps5001_kmr5802|Pulse Width Modulation implementation and RAM implementation | Lab09_xps5001_kmr5802.vhd
+|CMPEN 270| Old libraries done for introductory digital design class. Work done includes basic latches, flip-flops, counters, clock dividers, test benches, TUG-O-WAR games etc... 
